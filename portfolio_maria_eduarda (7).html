@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria Eduarda — Portfólio de Jornalismo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F2ECD9;
+    --paper-dim: #E8E0C9;
+    --ink: #1A1810;
+    --ink-soft: #4A4536;
+    --pink: #D6336C;
+    --mustard: #E8A93A;
+    --teal: #1B4B4A;
+    --line: rgba(26,24,16,0.16);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  .wrap{ max-width:960px; margin:0 auto; padding:0 28px; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{
+    position:relative;
+    padding:64px 0 56px;
+    border-bottom:3px solid var(--ink);
+  }
+
+  .masthead::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:6px;
+    background:repeating-linear-gradient(
+      90deg,
+      var(--pink) 0 24px,
+      var(--mustard) 24px 48px,
+      var(--teal) 48px 72px
+    );
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--pink);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .eyebrow::before{
+    content:"";
+    width:8px; height:8px;
+    background:var(--pink);
+    border-radius:50%;
+    display:inline-block;
+  }
+
+  h1.name{
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(42px, 9vw, 92px);
+    line-height:0.95;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+
+  .role-line{
+    margin-top:18px;
+    font-size:clamp(17px, 2.4vw, 21px);
+    color:var(--ink-soft);
+    max-width:560px;
+    font-style:italic;
+  }
+
+  .tags-row{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding:64px 0; border-bottom:1px solid var(--line); }
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:36px;
+  }
+
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--pink);
+  }
+
+  .section-title{
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(24px, 4vw, 34px);
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- SOBRE ---------- */
+  .about-text{
+    font-size:19px;
+    max-width:640px;
+    color:var(--ink-soft);
+  }
+
+  .about-text strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- DESTAQUE (documentário) ---------- */
+  .feature-card{
+    background:var(--paper-dim);
+    border:2px solid var(--ink);
+    padding:32px;
+    position:relative;
+  }
+
+  .flyer-stamp{
+    position:absolute;
+    top:-16px;
+    right:28px;
+    background:var(--pink);
+    color:var(--paper);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:8px 14px;
+    transform:rotate(3deg);
+    box-shadow:3px 3px 0 var(--ink);
+  }
+
+  .feature-title{
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(30px, 5vw, 46px);
+    text-transform:uppercase;
+    margin:8px 0 6px;
+    color:var(--teal);
+  }
+
+  .feature-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.04em;
+    margin-bottom:22px;
+  }
+
+  .video-frame{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:var(--ink);
+    border:2px solid var(--ink);
+    margin-bottom:24px;
+    overflow:hidden;
+  }
+
+  .video-frame iframe{
+    position:absolute; top:0; left:0;
+    width:100%; height:100%;
+    border:0;
+  }
+
+  .feature-synopsis{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:680px;
+  }
+
+  .feature-synopsis + .feature-synopsis{ margin-top:14px; }
+
+  .credit-line{
+    margin-top:20px;
+    padding-top:18px;
+    border-top:1px dashed var(--line);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  .credit-line b{ color:var(--ink); }
+
+  /* ---------- OUTRAS PRODUÇÕES ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:20px;
+  }
+
+  .ghost-card{
+    border:1.5px dashed var(--ink);
+    padding:26px 20px;
+    min-height:170px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    color:var(--ink-soft);
+  }
+
+  .ghost-card .cat{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--pink);
+  }
+
+  .ghost-card .status{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    align-self:flex-start;
+    padding:4px 10px;
+    border:1px solid var(--ink-soft);
+    margin-top:16px;
+  }
+
+  /* ---------- CLUSTER: EM PAUTA TV ---------- */
+  .cluster-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .cluster-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .media-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    margin-bottom:36px;
+  }
+
+  .media-card{
+    border:1.5px solid var(--ink);
+    background:var(--paper-dim);
+    text-decoration:none;
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    transition:transform 0.15s ease;
+  }
+
+  .media-card:hover{ transform:translate(-2px,-2px); }
+  .media-card:focus-visible{ outline:3px solid var(--pink); outline-offset:2px; }
+
+  .media-thumb{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:var(--ink);
+    overflow:hidden;
+    border-bottom:1.5px solid var(--ink);
+  }
+
+  .media-thumb img{
+    position:absolute; top:0; left:0;
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+
+  .play-badge{
+    position:absolute;
+    bottom:8px; right:8px;
+    background:var(--pink);
+    color:var(--paper);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:4px 8px;
+  }
+
+  .media-body{ padding:16px 18px 18px; flex:1; display:flex; flex-direction:column; }
+
+  .media-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--pink);
+    margin-bottom:8px;
+  }
+
+  .media-title{
+    font-family:'Archivo Black', sans-serif;
+    font-size:15px;
+    text-transform:uppercase;
+    line-height:1.25;
+    margin-bottom:8px;
+  }
+
+  .media-context{
+    font-size:14px;
+    color:var(--ink-soft);
+    flex:1;
+    margin-bottom:10px;
+  }
+
+  .media-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+  }
+
+  .podcast-card{
+    background:var(--paper-dim);
+    border:2px solid var(--ink);
+    padding:26px;
+    margin-bottom:36px;
+  }
+
+  .podcast-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:16px;
+  }
+
+  .podcast-title{
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(20px, 3vw, 26px);
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+
+  .podcast-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--pink);
+    margin-top:6px;
+  }
+
+  .podcast-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border:1.5px solid var(--teal);
+    color:var(--teal);
+    height:fit-content;
+  }
+
+  .podcast-context{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    max-width:640px;
+    margin-bottom:20px;
+  }
+
+  /* ---------- EXPERIÊNCIA (lista discreta) ---------- */
+  .exp-item{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+
+  .exp-item:last-child{ padding-bottom:0; }
+
+  .exp-when{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+
+  .exp-role{
+    font-size:16px;
+    font-weight:600;
+    color:var(--ink);
+    margin-top:4px;
+  }
+
+  .exp-org{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin-top:2px;
+  }
+
+  .exp-desc{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+
+  .skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:10px;
+  }
+
+  .skill-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+  }
+
+  .exp-link{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--pink);
+    text-decoration:none;
+    border-bottom:1px solid var(--pink);
+  }
+
+  .exp-link:hover{ opacity:0.7; }
+
+  @media (max-width:640px){
+    .exp-item{ grid-template-columns:1fr; gap:6px; }
+  }
+
+  .slideshow{ margin-bottom:20px; }
+
+  .slide-frame{
+    position:relative;
+    width:100%;
+    height:clamp(320px, 60vw, 560px);
+    background:var(--ink);
+    border:2px solid var(--ink);
+    overflow:hidden;
+  }
+
+  .slide-frame img{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    object-fit:contain;
+    opacity:0;
+    transition:opacity 0.3s ease;
+  }
+
+  .slide-frame img.active{ opacity:1; }
+
+  .slide-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:var(--paper);
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    font-family:'Archivo Black', sans-serif;
+    font-size:20px;
+    width:40px; height:40px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+
+  .slide-nav:hover{ background:var(--pink); color:var(--paper); border-color:var(--pink); }
+  .slide-nav:focus-visible{ outline:3px solid var(--pink); outline-offset:2px; }
+  .slide-nav.prev{ left:12px; }
+  .slide-nav.next{ right:12px; }
+
+  .slide-caption{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    background:linear-gradient(0deg, rgba(26,24,16,0.85) 0%, rgba(26,24,16,0) 100%);
+    color:var(--paper);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    padding:26px 16px 12px;
+  }
+
+  .slide-dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    padding-top:14px;
+  }
+
+  .slide-dot{
+    width:8px; height:8px;
+    border-radius:50%;
+    border:1.5px solid var(--ink);
+    background:transparent;
+    cursor:pointer;
+    padding:0;
+  }
+
+  .slide-dot.active{ background:var(--pink); border-color:var(--pink); }
+  .slide-dot:focus-visible{ outline:2px solid var(--pink); outline-offset:2px; }
+
+  /* ---------- CONTATO ---------- */
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+
+  .contact-pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:12px 18px;
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    text-decoration:none;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+
+  .contact-pill:hover{
+    background:var(--ink);
+    color:var(--paper);
+    transform:translate(-2px,-2px);
+  }
+
+  .contact-pill:focus-visible{
+    outline:3px solid var(--pink);
+    outline-offset:2px;
+  }
+
+  footer{
+    padding:32px 0 48px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:720px){
+    .grid, .media-grid{ grid-template-columns:1fr; }
+    .masthead{ padding:48px 0 40px; }
+    section{ padding:48px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .contact-pill{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="wrap">
+      <p class="eyebrow">Portfólio · 2026</p>
+      <h1 class="name">Maria Eduarda</h1>
+      <p class="role-line">Jornalista formada pela UFPel — produção em múltiplos formatos, do documentário ao conteúdo digital.</p>
+      <div class="tags-row">
+        <span class="tag">Audiovisual</span>
+        <span class="tag">Assessoria de Imprensa</span>
+        <span class="tag">Conteúdo Digital</span>
+        <span class="tag">Redes Sociais</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="sobre">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num mono">01</span>
+        <h2 class="section-title">Sobre</h2>
+      </div>
+      <p class="about-text">
+        Formada em <strong>Jornalismo pela Universidade Federal de Pelotas (UFPel)</strong>, com vivência em
+        <strong>produção audiovisual</strong>, <strong>assessoria de imprensa</strong>,
+        <strong>gestão de conteúdo digital</strong> e <strong>redes sociais</strong>. Interessada em contar
+        histórias que atravessam formatos — da reportagem de rua ao documentário.
+      </p>
+    </div>
+  </section>
+
+  <section id="destaque">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num mono">02</span>
+        <h2 class="section-title">Destaque</h2>
+      </div>
+
+      <div class="feature-card">
+        <span class="flyer-stamp">TCC · Documentário</span>
+        <p class="feature-title">Paraíso Dissidente</p>
+        <p class="feature-meta">Jornalismo Cultural &nbsp;·&nbsp; Gravado em 2025 &nbsp;·&nbsp; Finalizado em 2026</p>
+
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/e5X9fVCXaDA" title="Paraíso Dissidente — Documentário" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+
+        <p class="feature-synopsis">
+          Produção experimental que propõe uma leitura jornalística da <strong>Coisinha</strong>, manifestação
+          cultural independente que acontece em Pelotas (RS) — articulada em torno da música, da performance e
+          da ocupação coletiva do espaço urbano por corpos dissidentes.
+        </p>
+
+        <div class="credit-line">
+          Codireção com <b>Eduarda Saraiva</b>. Processo colaborativo que envolveu todas as etapas de
+          concepção, produção e finalização do documentário.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="producoes">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num mono">03</span>
+        <h2 class="section-title">Outras Produções</h2>
+      </div>
+
+      <p class="cluster-label">Em Pauta TV — Telejornal do curso de Jornalismo (UFPel)</p>
+      <div class="media-grid">
+        <a class="media-card" href="https://youtu.be/_Caxa4RzCQM" target="_blank" rel="noopener">
+          <div class="media-thumb">
+            <img src="https://img.youtube.com/vi/_Caxa4RzCQM/hqdefault.jpg" alt="Reportagem no Em Pauta TV" loading="lazy">
+            <span class="play-badge">Assistir</span>
+          </div>
+          <div class="media-body">
+            <p class="media-role">Repórter · Roteiro</p>
+            <p class="media-title">Reportagem — Em Pauta TV</p>
+            <p class="media-context">Pauta coberta como repórter, com concepção e escrita da lauda (roteiro).</p>
+            <p class="media-meta">2025</p>
+          </div>
+        </a>
+
+        <a class="media-card" href="https://www.youtube.com/watch?v=a2DR5mmEMiE" target="_blank" rel="noopener">
+          <div class="media-thumb">
+            <img src="https://img.youtube.com/vi/a2DR5mmEMiE/hqdefault.jpg" alt="Cinegrafia e edição — lançamento de livro de Vitor Ramil" loading="lazy">
+            <span class="play-badge">Assistir</span>
+          </div>
+          <div class="media-body">
+            <p class="media-role">Cinegrafia · Edição</p>
+            <p class="media-title">Lançamento de "A Primavera da Pontuação", de Vitor Ramil</p>
+            <p class="media-context">Cinegrafia e edição da pauta sobre o lançamento do livro.</p>
+            <p class="media-meta">2024</p>
+          </div>
+        </a>
+
+        <a class="media-card" href="https://www.youtube.com/watch?v=t2uvoEtTbnk" target="_blank" rel="noopener">
+          <div class="media-thumb">
+            <img src="https://img.youtube.com/vi/t2uvoEtTbnk/hqdefault.jpg" alt="Cinegrafia — mês do orgulho LGBT" loading="lazy">
+            <span class="play-badge">Assistir</span>
+          </div>
+          <div class="media-body">
+            <p class="media-role">Cinegrafia</p>
+            <p class="media-title">Mês do Orgulho LGBT</p>
+            <p class="media-context">Cinegrafia da pauta produzida sobre o mês do orgulho LGBT.</p>
+            <p class="media-meta">2024</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="podcast-card">
+        <div class="podcast-head">
+          <div>
+            <p class="podcast-title">Educomunicação em Foco</p>
+            <p class="podcast-role">Bolsista · Produtora</p>
+          </div>
+          <span class="podcast-tag">Projeto de Extensão UFPel · 2025</span>
+        </div>
+        <p class="podcast-context">
+          Podcast que debate temas que ultrapassam os muros da universidade. Atuação na coordenação do projeto
+          e na produção dos episódios — organização e acompanhamento das etapas de produção, coordenação de
+          pautas e reuniões, apoio e supervisão das gravações, e condução de eventos de divulgação.
+        </p>
+        <iframe style="border-radius:8px; border:1.5px solid var(--ink);" src="https://open.spotify.com/embed/show/7cC71Iz6NOYH2Qk9HAw9RO?utm_source=generator" width="100%" height="232" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num mono">04</span>
+        <h2 class="section-title">Experiência</h2>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <p class="exp-when">2025</p>
+          <p class="exp-role">Social Media</p>
+          <p class="exp-org">O.R.B.360 — Agência de Comunicação Integrada</p>
+        </div>
+        <div>
+          <p class="exp-desc">
+            Estágio em Social Media, com participação no planejamento e execução de estratégias de conteúdo
+            para redes sociais: elaboração de calendários editoriais, gerenciamento de redes, acompanhamento
+            de métricas e produção de relatórios de desempenho. Também atuei no alinhamento entre conteúdo
+            textual e direção visual das publicações, contribuindo para uma comunicação integrada entre
+            diferentes formatos.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-tag">Planejamento Editorial</span>
+            <span class="skill-tag">Gestão de Redes</span>
+            <span class="skill-tag">Análise de Métricas</span>
+            <span class="skill-tag">Relatórios</span>
+            <span class="skill-tag">Meta Business Suite</span>
+          </div>
+          <a class="exp-link" href="https://orb360.com.br/" target="_blank" rel="noopener">orb360.com.br</a>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <p class="exp-when">2025</p>
+          <p class="exp-role">Social Media Freelancer</p>
+          <p class="exp-org">Cangira — Cia. de Teatro VSQ (Pelotas)</p>
+        </div>
+        <div>
+          <p class="exp-desc">
+            Atuação como Social Media no projeto CANGIRA, da companhia de teatro VSQ, financiado pela
+            política nacional Aldir Blanc de fomento à cultura: criação da identidade visual, cinegrafia,
+            edição, publicação e gestão de redes.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-tag">Identidade Visual</span>
+            <span class="skill-tag">Cinegrafia</span>
+            <span class="skill-tag">Edição de Vídeo</span>
+            <span class="skill-tag">Gestão de Redes</span>
+          </div>
+          <a class="exp-link" href="https://www.instagram.com/cangira_?srtk=Zm5mOWhldmF0bjJo" target="_blank" rel="noopener">@cangira_</a>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <p class="exp-when">2026</p>
+          <p class="exp-role">Social Media Freelancer</p>
+          <p class="exp-org">Leandro Coser — Mentor de Negócios</p>
+        </div>
+        <div>
+          <p class="exp-desc">
+            Atuação freelancer acompanhando a comunicação digital e a produção de conteúdo do perfil
+            profissional, com foco principal no Instagram: criação de roteiros para vídeos, edição de
+            conteúdo audiovisual, elaboração de legendas, planejamento do calendário de publicações e
+            monitoramento do perfil — da concepção da ideia ao acompanhamento de desempenho das peças.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-tag">Roteiro Audiovisual</span>
+            <span class="skill-tag">Edição de Vídeo</span>
+            <span class="skill-tag">Copywriting</span>
+            <span class="skill-tag">Planejamento de Conteúdo</span>
+            <span class="skill-tag">Gestão de Instagram</span>
+          </div>
+          <a class="exp-link" href="https://www.instagram.com/leandroocoser/" target="_blank" rel="noopener">@leandroocoser</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num mono">05</span>
+        <h2 class="section-title">Contato</h2>
+      </div>
+      <div class="contact-row">
+        <a class="contact-pill" href="mailto:mariarteixeira.eduarda@gmail.com">mariarteixeira.eduarda@gmail.com</a>
+        <a class="contact-pill" href="https://www.linkedin.com/in/maria-eduarda-rodrigues-teixeira" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="contact-pill" href="https://wa.me/5555999512846" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">Maria Eduarda Teixeira — Portfólio de Jornalismo</div>
+  </footer>
+
+  <script>
+    (function(){
+      var frame = document.getElementById('photoSlideshow');
+      if(!frame) return;
+      var slides = Array.prototype.slice.call(frame.querySelectorAll('.slide'));
+      var caption = document.getElementById('slideCaption');
+      var dotsWrap = document.getElementById('slideDots');
+      var prevBtn = document.getElementById('slidePrev');
+      var nextBtn = document.getElementById('slideNext');
+      var current = 0;
+
+      slides.forEach(function(_, i){
+        var dot = document.createElement('button');
+        dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Ir para foto ' + (i+1));
+        dot.addEventListener('click', function(){ goTo(i); });
+        dotsWrap.appendChild(dot);
+      });
+      var dots = Array.prototype.slice.call(dotsWrap.children);
+
+      function goTo(index){
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        caption.textContent = slides[current].getAttribute('data-caption');
+      }
+
+      prevBtn.addEventListener('click', function(){ goTo(current - 1); });
+      nextBtn.addEventListener('click', function(){ goTo(current + 1); });
+
+      frame.addEventListener('keydown', function(e){
+        if(e.key === 'ArrowLeft') goTo(current - 1);
+        if(e.key === 'ArrowRight') goTo(current + 1);
+      });
+
+      var touchStartX = null;
+      frame.addEventListener('touchstart', function(e){ touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+      frame.addEventListener('touchend', function(e){
+        if(touchStartX === null) return;
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        if(Math.abs(dx) > 40){ dx > 0 ? goTo(current - 1) : goTo(current + 1); }
+        touchStartX = null;
+      }, {passive:true});
+    })();
+  </script>
+</body>
+</html>
